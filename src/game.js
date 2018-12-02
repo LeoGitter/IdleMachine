@@ -1,19 +1,14 @@
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
-var game = new Phaser.game(800, 600, Phaser.AUTO, '');
-
-game.state.add('play', 
-{
-    preload: function()
-    {
-        game.load.image('skeleton', 'assets/allacrost_enemy_sprites/skeleton.png');
+game.state.add('play', {
+    preload: function() {
+        this.game.load.image('skeleton', 'assets/allacrost_enemy_sprites/skeleton.png');
     },
-    create: function()
-    {
+    create: function() {
         var skeletonSprite = game.add.sprite(450, 290, 'skeleton');
         skeletonSprite.anchor.setTo(0.5, 0.5);
     },
-    render: function()
-    {
+    render: function() {
         game.debug.text('Adventure Awaits!', 250, 290);
     }
 });
