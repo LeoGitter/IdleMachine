@@ -70,14 +70,23 @@ game.state.add('play', {
             monster.details = data;
         
             //enable input so we can click it!
-            //monster.inputEnabled = true;
-            //monster.events.onInputDown.add(state.onClickMonster, state);
+            monster.inputEnabled = true;
+            monster.events.onInputDown.add(state.onClickMonster, state);
         });
 
         this.currentMonster = this.monsters.getRandom();
         this.currentMonster.position.set(this.game.world.centerX + 100, this.game.world.centerY);
 
     },
+
+    onClickMonster: function() {
+        // reset the currentMonster before we move him
+        this.currentMonster.position.set(1000, this.game.world.centerY);
+        // now pick the next in the list, and bring him up
+        this.currentMonster = this.monsters.getRandom();
+        this.currentMonster.position.set(this.game.world.centerX + 100, this.game.world.centerY);
+    },
+
     render: function() {
         game.debug.text(this.currentMonster.details.name,
             this.game.world.centerX - this.currentMonster.width / 2,
